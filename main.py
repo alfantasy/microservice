@@ -31,7 +31,7 @@ async def keep_alive():
 
     async with httpx.AsyncClient() as client:
         while True:
-            await asyncio.sleep(300)  # Пауза 5 минут (300 секунд)
+            await asyncio.sleep(60)
             try:
                 # Пингуем главную страницу
                 response = await client.get(APP_URL)
@@ -41,4 +41,5 @@ async def keep_alive():
 
 if __name__ == "__main__":
     # Фиксируем порт 59000
+    print("Request for start server")
     uvicorn.run(app, host="0.0.0.0", port=59000)
